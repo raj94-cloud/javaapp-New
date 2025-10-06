@@ -4,6 +4,17 @@ files:
   - source: target/aws-cicd-demo-1.0.0.jar
     destination: /home/ubuntu/app/
 hooks:
+  BeforeInstall:
+    - location: scripts/stop_server.sh
+      timeout: 30
+      runas: ubuntu
+  AfterInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+      runas: ubuntu
+    - location: scripts/fix_permissions.sh
+      timeout: 60
+      runas: root
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 60
