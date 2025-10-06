@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: target/aws-cicd-demo-1.0.0.jar
-    destination: /home/ec2-user/app/
+    destination: /home/ubuntu/app/
 hooks:
   ApplicationStart:
     - location: scripts/start.sh
